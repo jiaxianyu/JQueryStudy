@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<script src="js/jquery-3.4.1.js"></script>
+		<script src="js/jquery-3.4.1.min.js"></script>
+		<title>过滤选择器</title>
+		<style>
+			#btn_box{
+				position: absolute;
+				width: 50px; 
+				height: 50px; 
+				background-color: aqua;
+				left: 10px;
+			}
+		</style>
+	</head>
+	<body>
+		<div id="main_box">
+			<ul>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+			</ul>
+			<ul>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+				<li>你</li>
+			</ul>
+		</div>
+		
+		<div  id="btn_box"></div>
+	</body>
+	<script>
+		//1. 选择第一个元素  :first
+		$("ul li:first").css("color","red")
+		//2. 选择最后一个元素 :last
+		//3.选择偶数行  :even(从0开始)
+		$("li:even").css("color","red")
+		//4.选择奇数行  :odd(从0开始)
+		$("li:odd").css("color","green")
+		//5.eq:等于某一个索引(从当前位置开始后面的元素都使用这个样式)
+		$("ul li:gt(3)").css("color","black")
+		//6.gt:大于某一个索引
+		$("ul li:gt(8)").css("color","pink");
+		//7.lt:小于某一个索引
+		$("ul li:lt(8)").css("color","pink");
+		//8.not():不属于某一个索引
+		$("ul li:not(:gt(8))").css("color","pink");
+		//9.事件绑定
+		//动画效果
+		$("#btn_box").click(function(){
+			$("#btn_box:not(:animated)").animate({left:'+=100px'},"slow");
+		});
+	
+		$("#btn_box").bind("click",function(){});
+	</script>
+</html>

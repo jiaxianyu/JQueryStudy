@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>取值 操控节点</title>
+		<script src="js/jquery-3.4.1.js"></script>
+		<script src="js/jquery-3.4.1.min.js"></script>
+	</head>
+	<style>
+		div img {
+			width: 50px;
+		}
+	</style>
+	<body>
+		<label>大漠孤烟直</label>
+		<button id="btn">点击添加图片</button>
+		<div>
+		</div>
+	</body>
+	<script>
+		//获取文本 对应text
+		console.info($("label").text());
+		//获取html  对应innerHTML
+		console.info($("label").html());
+		//获取val
+		console.info($("label").val());
+
+		$("#btn").click(function() {
+			var img = "<img src='img/shangla.png'/><br/>"
+			//在某某里面追加标签
+			$("div").append(img);
+			
+			//将标签添加到某某里面
+			//1.将img转成一个jquery对象
+			//2.再使用这个对象调用方法
+			$(img).appendTo($("div"))
+			
+		})
+	</script>
+</html>

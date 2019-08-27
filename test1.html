@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>基本选择器/层次选择器的使用</title>
+		<script src="js/jquery-3.4.1.js"></script>
+		<script src="js/jquery-3.4.1.min.js"></script>
+	</head>
+	<style>
+	</style>
+	<body>
+		<div id="box1">
+			<label>科目</label>
+			<ul>
+				<li id="chinese" name="chinese">语文</li>
+				<li>数学</li>
+				<li>英语</li>
+				<li>政治</li>
+				<li>历史</li>
+				<li>地理</li>
+				<li>生物</li>
+				<li>物理</li>
+				<li>化学</li>
+				<li>体育</li>
+				<li>美术</li>
+				<label>你好</label>
+			</ul>
+		</div>
+
+		<div id="box2">
+			<ul>
+				<li>唐诗</li>
+				<li>宋词</li>
+				<li>元曲</li>
+				<li>易经</li>
+				<li>大学</li>
+				<li>中庸</li>
+				<li>春秋</li>
+			</ul>
+		</div>
+		<ul>
+			<li>百度<a></a></li>
+			<li>谷歌</li>
+			<li>360</li>
+		</ul>
+	</body>
+	<script>
+		//id选择器：$("#...").css()
+		//1.通过id获取内容
+		var chinese = $("#chinese").text();
+		console.info(chinese);
+		
+		//样式选择器：$(".XXX").css()
+		//1.通过name获取内容
+		var ch = $(".chinese").text();
+		console.info(ch);
+		
+		//标签选择器：$("...").css()
+		//1.通过标签改变字体颜色
+		// $("div").css("color","red")
+		
+		//派生选择器：
+		//根据祖先元素匹配所有的后代元素
+		$("ul li").css("color","green");
+		//根据父元素匹配所有的子元素
+		$("#box1>label").css("color","green");
+		//匹配prev后的相邻元素
+		$("#box2+ul").css("font-size","20px");
+		//匹配prev后面的所有兄弟元素
+		$("#box2~ul").css("font-style","italic");
+	</script>
+</html>

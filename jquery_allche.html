@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>复选框全选事件</title>
+		<script src="js/jquery-3.4.1.js"></script>
+		<script src="js/jquery-3.4.1.min.js"></script>
+	</head>
+	<body>
+		<table border="1">
+			<tr>
+				<th>选项</th>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>性别</th>
+			</tr>
+			<tr id="1">
+				<td><input type="checkbox" value="1" name="userinfo"/></td>
+				<td>1001</td>
+				<td>小明</td>
+				<td>男</td>
+			</tr>
+			<tr id="2">
+				<td><input type="checkbox" value="2" name="userinfo"/></td>
+				<td>1002</td>
+				<td>明明</td>
+				<td>女</td>
+			</tr>
+			<tr id="3">
+				<td><input type="checkbox" value="3" name="userinfo"/></td>
+				<td>1003</td>
+				<td>小红</td>
+				<td>女</td>
+			</tr>
+			<tr id="4">
+				<td><input type="checkbox" value="4" name="userinfo"/></td>
+				<td>1004</td>
+				<td>小花</td>
+				<td>女</td>
+			</tr>
+			<tr id="5">
+				<td><input type="checkbox" value="5" name="userinfo"/></td>
+				<td>1005</td>
+				<td>明明</td>
+				<td>女</td>
+			</tr>
+			<tr id="6">
+				<td><input type="checkbox" value="6" name="userinfo"/></td>
+				<td>1006</td>
+				<td>小红</td>
+				<td>女</td>
+			</tr>
+			<tr>
+				<td colspan="4">
+					<span><input id="chkAll" type="checkbox" />全选</span>
+					<span><input id="btnDel" type="button" value="删除" /></span>
+				</td>
+			</tr>
+		</table>
+	</body>
+	<script>
+		$(document).ready(function(){
+			
+			//监听全选框的改变事件
+			$("#chkAll").change(function(){
+				//点击全选框,所有的复选框都改变  使用prop()
+				//点击一次所有框全选,再点击一次所有框取消全选
+				$("input[name='userinfo']").prop("checked",$("#chkAll").prop("checked"));	
+			})
+			
+			//所有的选中，全选
+			//有一个不选,全选取消
+			//监听复选框
+			$("input[name='userinfo']").change(function(){
+				//如果复选框的打勾个数和复选框本身的个数一样,说明是全选
+				if($("input[name='userinfo']").length == $("input[name='userinfo']:checked").length){
+					$("#chkAll").prop("checked",true);
+				}else{
+					$("#chkAll").prop("checked",false);
+				}
+			})
+			
+			//删除选中的信息
+			//1.获取所有已经选中的标签
+			//2.通过标签获取其容器
+			//3.删除节点
+			$("#btnDel").click(function(){
+				$("input[name='userinfo']:checked").each(function (index,obj){
+					//这里拿到的Obj是一个js对象,我们需要将这个对象转成jquery对象
+					//通过id获取其容器
+					var id = $(obj).val();
+					//删除容器
+					$("#"+id).remove();
+				})
+			})
+		});
+	</script>
+</html>
